@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
+
+</head>
+<body>
+
+<select class="category_select" name="category_select">
+    <option value="0">All Goods</option>
+    <option th:each="category : ${category}"
+            th:value="${category.category_id}"
+            th:text="${category.category_name}"
+            th:selected="${(param.cat_id != null ) and (#strings.equals(param.cat_id[0], category.category_id))}"></option>
+</select>
+
+<select class="manufacturer_select" th:style="${(param.cat_id != null ) and (param.cat_id[0] != '0') ? '' : 'display:none'}">
+    <option th:each="manufacturer : ${manufacturer}"
+            th:value="${manufacturer.manufactur_id}"
+            th:text="${manufacturer.manufactur_name}"
+            th:selected="${(param.manufactur_id != null ) and (#strings.equals(param.manufactur_id, manufacturer.manufactur_id))}"
+    ></option>
+</select>
+
+<!--th:style="${condition ? 'display:block' : 'display:none'}" >-->
+<!--<p th:text=""></p>-->
+
+<h2>Goods</h2>
+<h3></h3>
+<table class="table">
+<thead>
+<tr>
+    <th>GoodID</th>
+    <th>GoodName</th>
+    <th>category_id</th>
+    <th>manufactur_id</th>
+    <th>count</th>
+    <th>price</th>
+    <th>button</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each = "goods: ${goods}">
+    <td th:text="${goods.goodid}">GoodID</td>
+    <td th:text="${goods.GoodName}">GoodName</td>
+    <td th:text="${goods.category_id}">category_id</td>
+    <td th:text="${goods.manufactur_id}">manufactur_id</td>
+    <td th:text="${goods.count}">count</td>
+    <td th:text="${goods.price}">price</td>
+    <td><button class="button-add" th:value="${goods.goodid}">Add to Cart</button></td>
+</tr>
+</tbody>
+</table>
+<a href="http://localhost:8080/cart">To Cart</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type = "text/javascript" th:src="@{/resources/static/goodscript.js}"></script>
+</body>
+</html>

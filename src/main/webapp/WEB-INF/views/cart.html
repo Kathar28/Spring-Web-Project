@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body>
+<h2>Cart</h2>
+<p th:text="${totalPrice}">Total price</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>GoodId</th>
+        <th>Name</th>
+        <th>count</th>
+        <th>price</th>
+        <th>button</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "cart: ${cart}">
+        <td th:text="${cart.id}">Id</td>
+        <td th:text="${cart.goodid}">GoodId</td>
+        <td th:text="${cart.name}">Name</td>
+        <td th:text="${cart.count}">count</td>
+        <td th:text="${cart.price}">price</td>
+        <td><button class="delete-button" id="delete-button" th:value="${cart.id}" >Delete</button></td>
+    </tr>
+    </tbody>
+</table>
+<a href="http://localhost:8080/goods">To Goods</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type = "text/javascript" th:src="@{/resources/static/goodscript.js}"></script>
+</body>
+</html>
