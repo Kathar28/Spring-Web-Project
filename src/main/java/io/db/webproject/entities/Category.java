@@ -3,7 +3,7 @@ package io.db.webproject.entities;
 import javax.persistence.*;
 
 @Entity
-public class category {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,9 +11,9 @@ public class category {
 
     private String category_name;
 
-    public category(){}
+    public Category(){}
 
-    public category(String category_name){
+    public Category(String category_name){
         this.category_name = category_name;
     }
 

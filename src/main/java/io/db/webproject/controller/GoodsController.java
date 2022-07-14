@@ -3,7 +3,6 @@ package io.db.webproject.controller;
 import io.db.webproject.entities.*;
 import io.db.webproject.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.SpringCacheAnnotationParser;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -11,11 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
-import java.util.HashMap;
-
 @Controller
-public class goodsController {
+public class GoodsController {
 
     @Autowired
     private GoodsRepository goodsRepository;
@@ -50,11 +46,11 @@ public class goodsController {
     }
     @RequestMapping(path = "/cart", method = RequestMethod.GET)
     public String CartController(Model model){
-        int totalprice = 0;
-        for (cart cartPrice : cartRepository.findAll()) {
-            totalprice += cartPrice.getPrice() * cartPrice.getCount();
+        int totalPrice = 0;
+        for (Cart cartPrice : cartRepository.findAll()) {
+            totalPrice += cartPrice.getPrice() * cartPrice.getCount();
         }
-        model.addAttribute("totalPrice", Integer.toString(totalprice));
+        model.addAttribute("totalPrice", Integer.toString(totalPrice));
         model.addAttribute("cart", cartRepository.findAll(Sort.by(Sort.Direction.ASC, "id")));
         return "cart";
     }

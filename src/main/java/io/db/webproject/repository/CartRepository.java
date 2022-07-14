@@ -1,14 +1,13 @@
 package io.db.webproject.repository;
 
-import io.db.webproject.entities.cart;
-import io.db.webproject.entities.goods;
+import io.db.webproject.entities.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 //import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface CartRepository extends JpaRepository<cart, Integer> {
+public interface CartRepository extends JpaRepository<Cart, Integer> {
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO pc_store.cart (goodid, name , count, price)\n" +

@@ -3,7 +3,7 @@ package io.db.webproject.entities;
 import javax.persistence.*;
 
 @Entity
-public class manufacturer {
+public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int manufactur_id;
@@ -11,9 +11,9 @@ public class manufacturer {
     private String manufactur_name;
 
     private int category_id;
-    public manufacturer(){}
+    public Manufacturer(){}
 
-    public manufacturer(String manufactur_name, int category_id){
+    public Manufacturer(String manufactur_name, int category_id){
         this.manufactur_name = manufactur_name;
         this.category_id = category_id;
     }

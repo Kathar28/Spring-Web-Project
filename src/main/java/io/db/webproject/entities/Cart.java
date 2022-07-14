@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cart", schema = "pc_store")
-public class cart {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -14,7 +14,7 @@ public class cart {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "goodid")
-    private goods goodid;
+    private Goods goodid;
 
     @Lob
     @Type(type = "org.hibernate.type.TextType")
@@ -39,7 +39,7 @@ public class cart {
         return goodid.getGoodid();
     }
 
-    public void setGoodid(goods goodid) {
+    public void setGoodid(Goods goodid) {
         this.goodid = goodid;
     }
 
